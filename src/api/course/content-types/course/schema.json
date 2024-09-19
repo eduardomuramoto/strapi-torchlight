@@ -13,6 +13,12 @@
   "attributes": {
     "CourseName": {
       "type": "string"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "mappedBy": "courses"
     }
   }
 }
