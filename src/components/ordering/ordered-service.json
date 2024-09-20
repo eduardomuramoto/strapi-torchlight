@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_ordering_ordered_services",
+  "info": {
+    "displayName": "Ordered Service",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "service": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::service.service"
+    }
+  }
+}

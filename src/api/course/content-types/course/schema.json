@@ -4,7 +4,8 @@
   "info": {
     "singularName": "course",
     "pluralName": "courses",
-    "displayName": "Course"
+    "displayName": "Course",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,6 +20,10 @@
       "relation": "manyToMany",
       "target": "api::tag.tag",
       "mappedBy": "courses"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "CourseName"
     }
   }
 }

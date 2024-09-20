@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_ordering_ordered_courses",
+  "info": {
+    "displayName": "Ordered Course",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "course": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::course.course"
+    }
+  }
+}
