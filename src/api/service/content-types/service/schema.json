@@ -4,7 +4,8 @@
   "info": {
     "singularName": "service",
     "pluralName": "services",
-    "displayName": "Service"
+    "displayName": "Service",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,6 +18,22 @@
     "slug": {
       "type": "uid",
       "targetField": "Name"
+    },
+    "Price": {
+      "type": "decimal"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

@@ -24,6 +24,66 @@
     "slug": {
       "type": "uid",
       "targetField": "CourseName"
+    },
+    "Price": {
+      "type": "decimal"
+    },
+    "facilitators": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::facilitator.facilitator",
+      "inversedBy": "courses"
+    },
+    "Location": {
+      "type": "customField",
+      "options": [
+        "In Person",
+        "Online"
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "courseCode": {
+      "type": "enumeration",
+      "enum": [
+        "Wellbeing-01",
+        "Wellbeing-02",
+        "Wellbeing-03",
+        "Relationship-01",
+        "Relationship-02",
+        "Relationship-03",
+        "Corporate-01",
+        "Corporate-02",
+        "Corporate-03",
+        "Community-01",
+        "Community-02",
+        "Community-03"
+      ]
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course.course"
+    },
+    "durationValue": {
+      "type": "integer"
+    },
+    "durationUnit": {
+      "type": "enumeration",
+      "enum": [
+        "hour",
+        "day",
+        "week"
+      ]
+    },
+    "courseDuration": {
+      "type": "component",
+      "repeatable": false,
+      "component": "course-components.duration"
+    },
+    "courseObjectives": {
+      "type": "component",
+      "repeatable": true,
+      "component": "course-components.course-objective"
     }
   }
 }

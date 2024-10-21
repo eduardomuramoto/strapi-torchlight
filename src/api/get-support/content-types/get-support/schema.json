@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "get_supports",
+  "info": {
+    "singularName": "get-support",
+    "pluralName": "get-supports",
+    "displayName": "/get-support",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Courses": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ordering.ordered-course"
+    }
+  }
+}

@@ -5,11 +5,12 @@ export interface OrderingOrderedService extends Schema.Component {
   info: {
     displayName: 'Ordered Service';
     icon: 'bulletList';
+    description: '';
   };
   attributes: {
-    service: Attribute.Relation<
+    services: Attribute.Relation<
       'ordering.ordered-service',
-      'oneToOne',
+      'oneToMany',
       'api::service.service'
     >;
   };
@@ -23,11 +24,34 @@ export interface OrderingOrderedCourse extends Schema.Component {
     description: '';
   };
   attributes: {
-    course: Attribute.Relation<
+    courses: Attribute.Relation<
       'ordering.ordered-course',
-      'oneToOne',
+      'oneToMany',
       'api::course.course'
     >;
+  };
+}
+
+export interface CourseComponentsDuration extends Schema.Component {
+  collectionName: 'components_course_components_durations';
+  info: {
+    displayName: 'Duration';
+  };
+  attributes: {
+    value: Attribute.Integer;
+    unit: Attribute.Enumeration<['hour', 'day', 'week']>;
+  };
+}
+
+export interface CourseComponentsCourseObjective extends Schema.Component {
+  collectionName: 'components_course_components_course_objectives';
+  info: {
+    displayName: 'Course Objective';
+    icon: 'check';
+  };
+  attributes: {
+    Objective: Attribute.String;
+    Icon: Attribute.Enumeration<['Understand', 'Chat', 'Indentify']>;
   };
 }
 
@@ -36,6 +60,8 @@ declare module '@strapi/types' {
     export interface Components {
       'ordering.ordered-service': OrderingOrderedService;
       'ordering.ordered-course': OrderingOrderedCourse;
+      'course-components.duration': CourseComponentsDuration;
+      'course-components.course-objective': CourseComponentsCourseObjective;
     }
   }
 }

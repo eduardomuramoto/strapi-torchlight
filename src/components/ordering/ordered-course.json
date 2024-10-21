@@ -7,9 +7,9 @@
   },
   "options": {},
   "attributes": {
-    "course": {
+    "courses": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::course.course"
     }
   }

@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "strapi develop",
+    "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@strapi/plugin-cloud": "4.25.10",
+    "@strapi/plugin-graphql": "4.25.10",
     "@strapi/plugin-i18n": "4.25.10",
     "@strapi/plugin-users-permissions": "4.25.10",
     "@strapi/strapi": "4.25.10",
@@ -20,6 +21,8 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
     "strapi-plugin-menus": "^1.6.1",
+    "strapi-plugin-multi-select": "^1.2.3",
+    "strapi-stripe": "^3.4.1",
     "styled-components": "5.3.3"
   },
   "author": {

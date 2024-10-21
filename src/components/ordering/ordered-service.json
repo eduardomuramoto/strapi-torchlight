@@ -2,13 +2,14 @@
   "collectionName": "components_ordering_ordered_services",
   "info": {
     "displayName": "Ordered Service",
-    "icon": "bulletList"
+    "icon": "bulletList",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "service": {
+    "services": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::service.service"
     }
   }

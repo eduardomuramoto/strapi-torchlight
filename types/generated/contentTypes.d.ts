@@ -886,6 +886,196 @@ export interface PluginMenusMenuItem extends Schema.CollectionType {
   };
 }
 
+export interface PluginStrapiStripeSsProduct extends Schema.CollectionType {
+  collectionName: 'strapi-stripe_ss-product';
+  info: {
+    tableName: 'StripeProduct';
+    singularName: 'ss-product';
+    pluralName: 'ss-products';
+    displayName: 'Product';
+    description: 'Stripe Products';
+    kind: 'collectionType';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    slug: Attribute.UID<'plugin::strapi-stripe.ss-product', 'title'> &
+      Attribute.Required &
+      Attribute.Unique;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    price: Attribute.Decimal & Attribute.Required;
+    currency: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    productImage: Attribute.Media & Attribute.Required;
+    isSubscription: Attribute.Boolean & Attribute.DefaultTo<false>;
+    interval: Attribute.String;
+    trialPeriodDays: Attribute.Integer;
+    stripeProductId: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 3;
+        },
+        number
+      >;
+    stripePriceId: Attribute.String &
+      Attribute.SetMinMax<
+        {
+          min: 3;
+        },
+        number
+      >;
+    stripePlanId: Attribute.String &
+      Attribute.SetMinMax<
+        {
+          min: 3;
+        },
+        number
+      >;
+    stripePayment: Attribute.Relation<
+      'plugin::strapi-stripe.ss-product',
+      'oneToMany',
+      'plugin::strapi-stripe.ss-payment'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::strapi-stripe.ss-product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::strapi-stripe.ss-product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginStrapiStripeSsPayment extends Schema.CollectionType {
+  collectionName: 'strapi-stripe_ss-payment';
+  info: {
+    tableName: 'StripePayment';
+    singularName: 'ss-payment';
+    pluralName: 'ss-payments';
+    displayName: 'Payment';
+    description: 'Stripe Payment';
+    kind: 'collectionType';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    txnDate: Attribute.DateTime & Attribute.Required;
+    transactionId: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    isTxnSuccessful: Attribute.Boolean & Attribute.DefaultTo<false>;
+    txnMessage: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 5000;
+      }>;
+    txnErrorMessage: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    txnAmount: Attribute.Decimal & Attribute.Required;
+    customerName: Attribute.String & Attribute.Required;
+    customerEmail: Attribute.String & Attribute.Required;
+    stripeProduct: Attribute.Relation<
+      'plugin::strapi-stripe.ss-payment',
+      'manyToOne',
+      'plugin::strapi-stripe.ss-product'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::strapi-stripe.ss-payment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::strapi-stripe.ss-payment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiAboutUsAboutUs extends Schema.SingleType {
+  collectionName: 'about_uses';
+  info: {
+    singularName: 'about-us';
+    pluralName: 'about-uses';
+    displayName: '/about-us';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::about-us.about-us',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::about-us.about-us',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCourseCourse extends Schema.CollectionType {
   collectionName: 'courses';
   info: {
@@ -905,6 +1095,45 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'api::tag.tag'
     >;
     slug: Attribute.UID<'api::course.course', 'CourseName'>;
+    Price: Attribute.Decimal;
+    facilitators: Attribute.Relation<
+      'api::course.course',
+      'manyToMany',
+      'api::facilitator.facilitator'
+    >;
+    Location: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        ['In Person', 'Online']
+      >;
+    courseCode: Attribute.Enumeration<
+      [
+        'Wellbeing-01',
+        'Wellbeing-02',
+        'Wellbeing-03',
+        'Relationship-01',
+        'Relationship-02',
+        'Relationship-03',
+        'Corporate-01',
+        'Corporate-02',
+        'Corporate-03',
+        'Community-01',
+        'Community-02',
+        'Community-03'
+      ]
+    >;
+    courses: Attribute.Relation<
+      'api::course.course',
+      'oneToMany',
+      'api::course.course'
+    >;
+    durationValue: Attribute.Integer;
+    durationUnit: Attribute.Enumeration<['hour', 'day', 'week']>;
+    courseDuration: Attribute.Component<'course-components.duration'>;
+    courseObjectives: Attribute.Component<
+      'course-components.course-objective',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -923,12 +1152,133 @@ export interface ApiCourseCourse extends Schema.CollectionType {
   };
 }
 
+export interface ApiFacilitatorFacilitator extends Schema.CollectionType {
+  collectionName: 'facilitators';
+  info: {
+    singularName: 'facilitator';
+    pluralName: 'facilitators';
+    displayName: 'Facilitator';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Name: Attribute.String;
+    slug: Attribute.UID;
+    Description: Attribute.Text;
+    courses: Attribute.Relation<
+      'api::facilitator.facilitator',
+      'manyToMany',
+      'api::course.course'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::facilitator.facilitator',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::facilitator.facilitator',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGetInvolvedGetInvolved extends Schema.SingleType {
+  collectionName: 'get_involveds';
+  info: {
+    singularName: 'get-involved';
+    pluralName: 'get-involveds';
+    displayName: '/get-involved';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::get-involved.get-involved',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::get-involved.get-involved',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGetSupportGetSupport extends Schema.SingleType {
+  collectionName: 'get_supports';
+  info: {
+    singularName: 'get-support';
+    pluralName: 'get-supports';
+    displayName: '/get-support';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Courses: Attribute.Component<'ordering.ordered-course'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::get-support.get-support',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::get-support.get-support',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomeHome extends Schema.SingleType {
+  collectionName: 'homes';
+  info: {
+    singularName: 'home';
+    pluralName: 'homes';
+    displayName: '/home';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiServiceService extends Schema.CollectionType {
   collectionName: 'services';
   info: {
     singularName: 'service';
     pluralName: 'services';
     displayName: 'Service';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -936,6 +1286,9 @@ export interface ApiServiceService extends Schema.CollectionType {
   attributes: {
     Name: Attribute.String;
     slug: Attribute.UID<'api::service.service', 'Name'>;
+    Price: Attribute.Decimal;
+    Description: Attribute.Text;
+    Icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1006,7 +1359,14 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::menus.menu': PluginMenusMenu;
       'plugin::menus.menu-item': PluginMenusMenuItem;
+      'plugin::strapi-stripe.ss-product': PluginStrapiStripeSsProduct;
+      'plugin::strapi-stripe.ss-payment': PluginStrapiStripeSsPayment;
+      'api::about-us.about-us': ApiAboutUsAboutUs;
       'api::course.course': ApiCourseCourse;
+      'api::facilitator.facilitator': ApiFacilitatorFacilitator;
+      'api::get-involved.get-involved': ApiGetInvolvedGetInvolved;
+      'api::get-support.get-support': ApiGetSupportGetSupport;
+      'api::home.home': ApiHomeHome;
       'api::service.service': ApiServiceService;
       'api::tag.tag': ApiTagTag;
     }

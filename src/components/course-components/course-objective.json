@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_course_components_course_objectives",
+  "info": {
+    "displayName": "Course Objective",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "Objective": {
+      "type": "string"
+    },
+    "Icon": {
+      "type": "enumeration",
+      "enum": [
+        "Understand",
+        "Chat",
+        "Indentify"
+      ]
+    }
+  }
+}
