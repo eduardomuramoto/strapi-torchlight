@@ -25,15 +25,13 @@
     "Description": {
       "type": "text"
     },
-    "Icon": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
+    "ServiceIcon": {
+      "type": "enumeration",
+      "enum": [
+        "advocacy",
+        "counselling",
+        "legal"
+      ]
     }
   }
 }

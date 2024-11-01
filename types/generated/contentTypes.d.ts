@@ -1288,7 +1288,7 @@ export interface ApiServiceService extends Schema.CollectionType {
     slug: Attribute.UID<'api::service.service', 'Name'>;
     Price: Attribute.Decimal;
     Description: Attribute.Text;
-    Icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    ServiceIcon: Attribute.Enumeration<['advocacy', 'counselling', 'legal']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

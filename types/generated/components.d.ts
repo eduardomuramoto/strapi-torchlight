@@ -48,10 +48,20 @@ export interface CourseComponentsCourseObjective extends Schema.Component {
   info: {
     displayName: 'Course Objective';
     icon: 'check';
+    description: '';
   };
   attributes: {
     Objective: Attribute.String;
-    Icon: Attribute.Enumeration<['Understand', 'Chat', 'Indentify']>;
+    Icon: Attribute.Enumeration<
+      [
+        'understand',
+        'developing',
+        'caring',
+        'community',
+        'red-flag',
+        'role-play'
+      ]
+    >;
   };
 }
 
