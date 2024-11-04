@@ -1,4 +1,4 @@
-module.exports = [
+module.exports = ({ env }) =>  [
   // Default middleware configuration with additional CORS settings
   {
     name: 'strapi::logger',
@@ -12,8 +12,8 @@ module.exports = [
   {
     name: 'strapi::cors',
     config: {
-      enabled: false,
-      origin: ['http://localhost:3000'],  // Allow all origins; replace with specific domains in production
+      enabled: true,
+      origin: [ env('HOST'),],  // Allow all origins; replace with specific domains in production
       credentials: true,
     },
   },
