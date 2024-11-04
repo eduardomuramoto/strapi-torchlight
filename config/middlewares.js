@@ -9,14 +9,14 @@ module.exports = [
   {
     name: 'strapi::security',
   },
-  // {
-  //   name: 'strapi::cors',
-  //   config: {
-  //     enabled: true,
-  //     origin: ['http://localhost:3000'],  // Allow all origins; replace with specific domains in production
-  //     credentials: true,
-  //   },
-  // },
+  {
+    name: 'strapi::cors',
+    config: {
+      enabled: false,
+      origin: ['http://localhost:3000'],  // Allow all origins; replace with specific domains in production
+      credentials: true,
+    },
+  },
   {
     name: 'strapi::poweredBy',
   },
