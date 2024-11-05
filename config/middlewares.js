@@ -14,6 +14,7 @@ module.exports = ({ env }) =>  [
     config: {
       enabled: true,
       origin: ['http://localhost:3000', 'https://strapi-torchlight.onrender.com','https://next-torchlight-nhvoelslg-eduardo-muramotos-projects.vercel.app'],  // Allow all origins; replace with specific domains in production
+      methods: ['GET', 'POST', 'OPTIONS'],
     },
   },
   {
