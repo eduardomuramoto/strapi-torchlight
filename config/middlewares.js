@@ -12,7 +12,8 @@ module.exports = ({ env }) =>  [
   {
     name: 'strapi::cors',
     config: {
-      headers: '*',
+      credentials: true,
+      headers: ['Content-Type', 'Authorization'],
       origin: ['http://localhost:3000', 
         'http://next-torchlight.vercel.app',
         'https://next-torchlight.vercel.app', 
