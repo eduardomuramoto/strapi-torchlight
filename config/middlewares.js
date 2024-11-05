@@ -14,8 +14,11 @@ module.exports = ({ env }) =>  [
     config: {
       headers: '*',
       origin: ['http://localhost:3000', 
+        'http://next-torchlight.vercel.app',
         'https://next-torchlight.vercel.app', 
-        'http://next-torchlight.vercel.app'],  // Allow all origins; replace with specific domains in production
+        'https://next-torchlight-git-main-eduardo-muramotos-projects.vercel.app/',
+        'https://next-torchlight-1f2a19f11-eduardo-muramotos-projects.vercel.app/',
+      ],  // Allow all origins; replace with specific domains in production
     },
   },
   {
