@@ -14,6 +14,7 @@ module.exports = ({ env }) =>  [
     config: {
       enabled: true,
       origin: ['*'],  // Allow all origins; replace with specific domains in production
+      headers: ['Content-Type', 'Authorization'],
       methods: ['GET', 'POST', 'OPTIONS'],
       credentials: true
     },
