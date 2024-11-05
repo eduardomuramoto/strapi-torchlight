@@ -13,8 +13,9 @@ module.exports = ({ env }) =>  [
     name: 'strapi::cors',
     config: {
       enabled: true,
-      origin: ['http://localhost:3000', 'https://next-torchlight.vercel.app/','https://next-torchlight-nhvoelslg-eduardo-muramotos-projects.vercel.app'],  // Allow all origins; replace with specific domains in production
+      origin: ['*'],  // Allow all origins; replace with specific domains in production
       methods: ['GET', 'POST', 'OPTIONS'],
+      credentials: true
     },
   },
   {
