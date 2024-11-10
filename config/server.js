@@ -1,4 +1,3 @@
-const cronTasks =  require('./cron')
 
 module.exports = ({ env }) => ({
   host: env('HOST', '0.0.0.0'),
@@ -9,8 +8,5 @@ module.exports = ({ env }) => ({
   webhooks: {
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
   },
-  cron: {
-    enabled: true,
-    tasks: cronTasks,
-  },
+
 });
