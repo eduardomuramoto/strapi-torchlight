@@ -35,7 +35,6 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::facilitator.facilitator",
-      "private": true,
       "inversedBy": "courses"
     },
     "Location": {

@@ -1101,8 +1101,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'api::course.course',
       'manyToMany',
       'api::facilitator.facilitator'
-    > &
-      Attribute.Private;
+    >;
     Location: Attribute.JSON &
       Attribute.Required &
       Attribute.CustomField<
