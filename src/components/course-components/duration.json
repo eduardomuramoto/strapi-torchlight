@@ -1,12 +1,14 @@
 {
   "collectionName": "components_course_components_durations",
   "info": {
-    "displayName": "Duration"
+    "displayName": "Duration",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "value": {
-      "type": "integer"
+      "type": "integer",
+      "required": true
     },
     "unit": {
       "type": "enumeration",
@@ -14,7 +16,8 @@
         "hour",
         "day",
         "week"
-      ]
+      ],
+      "required": true
     }
   }
 }

@@ -8,7 +8,8 @@
   "options": {},
   "attributes": {
     "Objective": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "Icon": {
       "type": "enumeration",
@@ -17,9 +18,10 @@
         "developing",
         "caring",
         "community",
-        "red-flag",
-        "role-play"
-      ]
+        "redflag",
+        "roleplay"
+      ],
+      "required": true
     }
   }
 }

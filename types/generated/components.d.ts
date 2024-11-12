@@ -36,10 +36,11 @@ export interface CourseComponentsDuration extends Schema.Component {
   collectionName: 'components_course_components_durations';
   info: {
     displayName: 'Duration';
+    description: '';
   };
   attributes: {
-    value: Attribute.Integer;
-    unit: Attribute.Enumeration<['hour', 'day', 'week']>;
+    value: Attribute.Integer & Attribute.Required;
+    unit: Attribute.Enumeration<['hour', 'day', 'week']> & Attribute.Required;
   };
 }
 
@@ -51,17 +52,11 @@ export interface CourseComponentsCourseObjective extends Schema.Component {
     description: '';
   };
   attributes: {
-    Objective: Attribute.String;
+    Objective: Attribute.String & Attribute.Required;
     Icon: Attribute.Enumeration<
-      [
-        'understand',
-        'developing',
-        'caring',
-        'community',
-        'red-flag',
-        'role-play'
-      ]
-    >;
+      ['understand', 'developing', 'caring', 'community', 'redflag', 'roleplay']
+    > &
+      Attribute.Required;
   };
 }
 

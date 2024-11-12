@@ -13,7 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "CourseName": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "tags": {
       "type": "relation",
@@ -23,15 +24,18 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "CourseName"
+      "targetField": "CourseName",
+      "required": true
     },
     "Price": {
-      "type": "decimal"
+      "type": "decimal",
+      "required": true
     },
     "facilitators": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::facilitator.facilitator",
+      "private": true,
       "inversedBy": "courses"
     },
     "Location": {
@@ -40,7 +44,8 @@
         "In Person",
         "Online"
       ],
-      "customField": "plugin::multi-select.multi-select"
+      "customField": "plugin::multi-select.multi-select",
+      "required": true
     },
     "courseCode": {
       "type": "enumeration",
@@ -57,33 +62,25 @@
         "Community-01",
         "Community-02",
         "Community-03"
-      ]
+      ],
+      "required": true
     },
     "courses": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::course.course"
     },
-    "durationValue": {
-      "type": "integer"
-    },
-    "durationUnit": {
-      "type": "enumeration",
-      "enum": [
-        "hour",
-        "day",
-        "week"
-      ]
-    },
     "courseDuration": {
       "type": "component",
       "repeatable": false,
-      "component": "course-components.duration"
+      "component": "course-components.duration",
+      "required": true
     },
     "courseObjectives": {
       "type": "component",
       "repeatable": true,
-      "component": "course-components.course-objective"
+      "component": "course-components.course-objective",
+      "required": true
     }
   }
 }

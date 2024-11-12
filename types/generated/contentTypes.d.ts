@@ -1088,20 +1088,23 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    CourseName: Attribute.String;
+    CourseName: Attribute.String & Attribute.Required;
     tags: Attribute.Relation<
       'api::course.course',
       'manyToMany',
       'api::tag.tag'
     >;
-    slug: Attribute.UID<'api::course.course', 'CourseName'>;
-    Price: Attribute.Decimal;
+    slug: Attribute.UID<'api::course.course', 'CourseName'> &
+      Attribute.Required;
+    Price: Attribute.Decimal & Attribute.Required;
     facilitators: Attribute.Relation<
       'api::course.course',
       'manyToMany',
       'api::facilitator.facilitator'
-    >;
+    > &
+      Attribute.Private;
     Location: Attribute.JSON &
+      Attribute.Required &
       Attribute.CustomField<
         'plugin::multi-select.multi-select',
         ['In Person', 'Online']
@@ -1121,19 +1124,20 @@ export interface ApiCourseCourse extends Schema.CollectionType {
         'Community-02',
         'Community-03'
       ]
-    >;
+    > &
+      Attribute.Required;
     courses: Attribute.Relation<
       'api::course.course',
       'oneToMany',
       'api::course.course'
     >;
-    durationValue: Attribute.Integer;
-    durationUnit: Attribute.Enumeration<['hour', 'day', 'week']>;
-    courseDuration: Attribute.Component<'course-components.duration'>;
+    courseDuration: Attribute.Component<'course-components.duration'> &
+      Attribute.Required;
     courseObjectives: Attribute.Component<
       'course-components.course-objective',
       true
-    >;
+    > &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
