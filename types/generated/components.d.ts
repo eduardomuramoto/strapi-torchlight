@@ -68,7 +68,7 @@ export interface CourseComponentsCourseObjective extends Schema.Component {
         'gender',
         'heart',
         'identify',
-        'indentifyhead',
+        'identity',
         'mechanism',
         'plan',
         'puzzle',
