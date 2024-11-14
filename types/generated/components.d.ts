@@ -54,7 +54,30 @@ export interface CourseComponentsCourseObjective extends Schema.Component {
   attributes: {
     Objective: Attribute.String & Attribute.Required;
     Icon: Attribute.Enumeration<
-      ['understand', 'developing', 'caring', 'community', 'redflag', 'roleplay']
+      [
+        'actionplan',
+        'advocacy',
+        'analyse',
+        'card',
+        'caring',
+        'communication',
+        'community',
+        'confidence',
+        'explore',
+        'foster',
+        'gender',
+        'heart',
+        'identify',
+        'indentifyhead',
+        'mechanism',
+        'plan',
+        'puzzle',
+        'roleplay',
+        'strategy',
+        'understandhead',
+        'understanding',
+        'unlockhead'
+      ]
     > &
       Attribute.Required;
   };

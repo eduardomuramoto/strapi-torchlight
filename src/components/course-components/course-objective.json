@@ -14,12 +14,28 @@
     "Icon": {
       "type": "enumeration",
       "enum": [
-        "understand",
-        "developing",
+        "actionplan",
+        "advocacy",
+        "analyse",
+        "card",
         "caring",
+        "communication",
         "community",
-        "redflag",
-        "roleplay"
+        "confidence",
+        "explore",
+        "foster",
+        "gender",
+        "heart",
+        "identify",
+        "indentifyhead",
+        "mechanism",
+        "plan",
+        "puzzle",
+        "roleplay",
+        "strategy",
+        "understandhead",
+        "understanding",
+        "unlockhead"
       ],
       "required": true
     }
